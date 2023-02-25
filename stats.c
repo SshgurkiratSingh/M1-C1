@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name>
+ * @file stats.c
  * @brief <Add Brief Description Here >
  *
  * <Add Extended Description Here>
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Gurkirat Singh
+ * @date 25/02/2023
  *
  */
 
@@ -24,6 +24,48 @@
 
 /* Size of the Data Set */
 #define SIZE (40)
+
+int print_array(unsigned char *arr, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("\t %d", *(arr + i));
+    }
+    return 0;
+}
+float find_mean(unsigned char a[], int size)
+{
+    int sum = 0;
+    for (int i = 0; i < SIZE; i++)
+    {
+        sum += a[i];
+    }
+    return sum / SIZE;
+}
+unsigned char find_maximum(unsigned char a[], int size)
+{
+    int max = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (max < a[i])
+        {
+            max = a[i];
+        }
+    }
+    return max;
+}
+unsigned char find_minimum(unsigned char a[], int size)
+{
+    int min = 255;
+    for (int i = 0; i < size; i++)
+    {
+        if (min > a[i])
+        {
+            min = a[i];
+        }
+    }
+    return min;
+}
 
 void main()
 {
@@ -35,15 +77,14 @@ void main()
                                 7, 87, 250, 230, 99, 3, 100, 90};
 
     /* Other Variable Declarations Go Here */
+    unsigned char maximum, minimum, median;
+    double mean;
     /* Statistics and Printing Functions Go Here */
-}
-int print_array(unsigned char *arr, int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d", *(arr + i));
-    }
-    return 0;
-}
 
+    mean = find_mean(test, SIZE);
+    maximum = find_maximum(test, SIZE);
+    minimum = find_minimum(test, SIZE);
+
+    printf("%d", minimum);
+}
 /* Add other Implementation File Code Here */
