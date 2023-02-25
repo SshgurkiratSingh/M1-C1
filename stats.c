@@ -66,7 +66,30 @@ unsigned char find_minimum(unsigned char a[], int size)
     }
     return min;
 }
+unsigned char sort_array(unsigned char *arr, int size)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int j = i + 1; j < SIZE; j++)
+        {
+            if (*(arr + i) > *(arr + j))
+            {
+                int temp = *(arr + j);
+                *(arr + j) = *(arr + i);
+                *(arr + i) = temp;
+            }
+        }
+    }
 
+    for (int i = 0; i < size; i++)
+    {
+        printf("\t %d", *(arr + i));
+    }
+    return 0;
+}
+unsigned char find_median(){
+
+}
 void main()
 {
 
@@ -84,7 +107,9 @@ void main()
     mean = find_mean(test, SIZE);
     maximum = find_maximum(test, SIZE);
     minimum = find_minimum(test, SIZE);
-
-    printf("%d", minimum);
+    printf("\nPrinting The Given Array :\n");
+    print_array(test, SIZE);
+    printf("\nPrinting The Sorted Array :\n");
+    sort_array(test, SIZE);
 }
 /* Add other Implementation File Code Here */
