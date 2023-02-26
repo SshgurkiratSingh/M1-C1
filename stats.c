@@ -15,9 +15,7 @@ This file contains the implementation of several functions that can be used
 to analyze and manipulate an array of unsigned char data. The implemented
 functions include calculating the mean, median, maximum and minimum values
 of the array, as well as sorting the array in ascending order and printing
-its contents to the console. The intended use of these functions is for
-educational purposes in the field of embedded systems.
-
+its contents to the console.
  *
  * @author Gurkirat Singh
  * @date 25/02/2023
@@ -29,7 +27,11 @@ educational purposes in the field of embedded systems.
 
 /* Size of the Data Set */
 #define SIZE (40)
-
+void print_statistic(unsigned char min, unsigned char max, float mean, float med)
+{
+    printf("\nThe minimum and maximum value from the array is %d and %d respectively\n", min, max);
+    printf("The mean of element of array is %f while the medianis %f\t", mean, med);
+}
 int print_array(unsigned char *arr, int size)
 {
     for (int i = 0; i < size; i++)
@@ -122,5 +124,5 @@ void main()
     printf("\nPrinting The Sorted Array :\n");
     sort_array(test, SIZE);
     median = find_median(test, SIZE);
-    printf("%lf\n", median);
+    print_statistic(minimum, maximum, mean, median);
 }
