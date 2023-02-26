@@ -10,9 +10,14 @@
  *****************************************************************************/
 /**
  * @file stats.c
- * @brief <Add Brief Description Here >
- *
- * <Add Extended Description Here>
+ * @brief Implementation of statistical functions for an array of data
+This file contains the implementation of several functions that can be used
+to analyze and manipulate an array of unsigned char data. The implemented
+functions include calculating the mean, median, maximum and minimum values
+of the array, as well as sorting the array in ascending order and printing
+its contents to the console. The intended use of these functions is for
+educational purposes in the field of embedded systems.
+
  *
  * @author Gurkirat Singh
  * @date 25/02/2023
@@ -36,11 +41,11 @@ int print_array(unsigned char *arr, int size)
 float find_mean(unsigned char a[], int size)
 {
     int sum = 0;
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < size; i++)
     {
         sum += a[i];
     }
-    return sum / SIZE;
+    return sum / size;
 }
 unsigned char find_maximum(unsigned char a[], int size)
 {
@@ -66,11 +71,11 @@ unsigned char find_minimum(unsigned char a[], int size)
     }
     return min;
 }
-unsigned char sort_array(unsigned char *arr, int size)
+void sort_array(unsigned char *arr, int size)
 {
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < size; i++)
     {
-        for (int j = i + 1; j < SIZE; j++)
+        for (int j = i + 1; j < size; j++)
         {
             if (*(arr + i) > *(arr + j))
             {
@@ -85,10 +90,15 @@ unsigned char sort_array(unsigned char *arr, int size)
     {
         printf("\t %d", *(arr + i));
     }
-    return 0;
 }
-unsigned char find_median(){
+float find_median(unsigned char a[], int size)
+{
 
+    if (size % 2 == 0)
+    {
+        return ((a[size / 2 - 1] + a[size / 2]) / 2.0);
+    }
+    return (a[size / 2]);
 }
 void main()
 {
@@ -100,8 +110,8 @@ void main()
                                 7, 87, 250, 230, 99, 3, 100, 90};
 
     /* Other Variable Declarations Go Here */
-    unsigned char maximum, minimum, median;
-    double mean;
+    unsigned char maximum, minimum;
+    double mean, median = 0;
     /* Statistics and Printing Functions Go Here */
 
     mean = find_mean(test, SIZE);
@@ -111,5 +121,6 @@ void main()
     print_array(test, SIZE);
     printf("\nPrinting The Sorted Array :\n");
     sort_array(test, SIZE);
+    median = find_median(test, SIZE);
+    printf("%lf\n", median);
 }
-/* Add other Implementation File Code Here */
