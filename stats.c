@@ -79,7 +79,7 @@ void sort_array(unsigned char *arr, int size)
     {
         for (int j = i + 1; j < size; j++)
         {
-            if (*(arr + i) > *(arr + j))
+            if (*(arr + i) < *(arr + j))
             {
                 int temp = *(arr + j);
                 *(arr + j) = *(arr + i);
