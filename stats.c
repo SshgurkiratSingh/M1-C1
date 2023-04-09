@@ -40,7 +40,7 @@ int print_array(unsigned char *arr, int size)
     }
     return 0;
 }
-float find_mean(unsigned char a[], int size)
+int find_mean(unsigned char a[], int size)
 {
     int sum = 0;
     for (int i = 0; i < size; i++)
@@ -93,7 +93,7 @@ void sort_array(unsigned char *arr, int size)
         printf("\t %d", *(arr + i));
     }
 }
-float find_median(unsigned char a[], int size)
+int find_median(unsigned char a[], int size)
 {
 
     if (size % 2 == 0)
@@ -113,10 +113,11 @@ void main()
 
     /* Other Variable Declarations Go Here */
     unsigned char maximum, minimum;
-    double mean, median = 0;
+    int mean, median = 0;
     /* Statistics and Printing Functions Go Here */
 
     mean = find_mean(test, SIZE);
+  
     maximum = find_maximum(test, SIZE);
     minimum = find_minimum(test, SIZE);
     printf("\nPrinting The Given Array :\n");
@@ -124,5 +125,6 @@ void main()
     printf("\nPrinting The Sorted Array :\n");
     sort_array(test, SIZE);
     median = find_median(test, SIZE);
+   
     print_statistic(minimum, maximum, mean, median);
 }
